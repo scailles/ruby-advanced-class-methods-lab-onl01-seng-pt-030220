@@ -52,9 +52,11 @@ class Song
   end
     
     def self.create_from_filename(filename)
-      song = self.new_from_filename(filename)
-      song.name = filename_song(filename)
-      self.all << has_and_belongs_to_many
+    result = self.new_from_filename(filename)
+    song = self.create
+    song.name = result.name
+    song.artist_name = result.artist_name
+    song
     end
 
     
